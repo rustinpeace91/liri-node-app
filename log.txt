@@ -37,4 +37,36 @@ Artist name: Korn
 Song URL: https://open.spotify.com/track/6W21LNLz9Sw7sUSNWMSHRuSong name: The Thing That Should Not Be (Remastered)
 Album name: Master of Puppets (Remastered Deluxe Box Set)
 Artist name: Metallica
-Song URL: https://open.spotify.com/track/0Zo0GJhGcT2qKFb5NxY3Vf
+Song URL: https://open.spotify.com/track/0Zo0GJhGcT2qKFb5NxY3Vfmade another tweet
+Mon Apr 16 02:26:25 +0000 2018
+Im not even on twitter and yet i post
+Mon Apr 16 01:00:07 +0000 2018
+Yippee Kiyay I made a Twitter Bot!
+Mon Apr 16 00:51:04 +0000 2018
+This is my second tweet
+Mon Apr 09 22:30:03 +0000 2018
+This is my first tweet.
+Mon Apr 09 22:29:49 +0000 2018
+Song name: It Ain't Hard to Tell
+Album name: Illmatic
+Artist name: Nas
+Song URL: https://open.spotify.com/track/2CPturRUlpvirYr7VpkXCVTitle: Godfather
+Year Released: 1991
+IMDB Rating: 8.5
+Country: India
+LanguageMalayalam
+Plot: Two youngsters from rival clans fall in love.
+Cast: N.N. Pillai, Mukesh, Kanaka, PhilominaTitle: Godfather
+Year Released: 1991
+IMDB Rating: 8.5
+Country: India
+LanguageMalayalam
+Plot: Two youngsters from rival clans fall in love.
+Cast: N.N. Pillai, Mukesh, Kanaka, PhilominaTitle: The Shining
+Year Released: 1980
+IMDB Rating: 8.4
+Rotten Tomatoes Rating: 87%
+Country: UK, USA
+LanguageEnglish
+Plot: A family heads to an isolated hotel for the winter where an evil spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.
+Cast: Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers

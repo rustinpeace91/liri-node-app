@@ -85,6 +85,7 @@ function omdbThis(command) {
     var request = require('request');
     request('http://www.omdbapi.com/?apikey=trilogy&t=' + command, function (error, response, body) {
         var parsed = JSON.parse(body);
+        //console.log(parsed);
         var movieTxt = "Title: " + parsed.Title +
         "\nYear Released: " + parsed.Year +
         "\nIMDB Rating: " + parsed.imdbRating +
@@ -117,24 +118,29 @@ function main() {
             main();
         });
     };
-    
-    if(program === "my-tweets"){
-        myTweets();
-    };
 
-    if(program === "spotify-this-song"){
-        spotThis(command);
-    };
 
-    if(program === "movie-this"){
-        if(process.argv[3] === undefined){
-            command = "Mr. Nobody";
-        };
-        omdbThis(command);
-    };
 
-    if(program === "tweet-this"){
-        tweetThis(command);
+    switch(program) {
+        case "my-tweets":
+            myTweets();
+            break;
+        case "spotify-this-song":
+            spotThis(command);
+            break;
+
+        case "movie-this":
+            if(process.argv[3] === undefined){
+                command = "Mr. Nobody";
+            };
+            omdbThis(command);
+            break;
+
+        case "tweet-this":
+            tweetThis(command);
+            break;
+        default:
+            console.log("not a valid command");
     }; 
 };
 
