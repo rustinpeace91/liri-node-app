@@ -126,7 +126,7 @@ function main() {
         spotThis(command);
     };
 
-    if(program === "movie"){
+    if(program === "movie-this"){
         if(process.argv[3] === undefined){
             command = "Mr. Nobody";
         };

@@ -34,4 +34,7 @@ Mon Apr 09 22:29:49 +0000 2018
 Song name: Freak On a Leash
 Album name: Follow The Leader
 Artist name: Korn
-Song URL: https://open.spotify.com/track/6W21LNLz9Sw7sUSNWMSHRu
+Song URL: https://open.spotify.com/track/6W21LNLz9Sw7sUSNWMSHRuSong name: The Thing That Should Not Be (Remastered)
+Album name: Master of Puppets (Remastered Deluxe Box Set)
+Artist name: Metallica
+Song URL: https://open.spotify.com/track/0Zo0GJhGcT2qKFb5NxY3Vf
