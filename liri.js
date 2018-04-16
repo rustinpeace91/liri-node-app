@@ -5,11 +5,7 @@ var Twitter = require('twitter');
 var keys = require("./keys.js");
 var program = process.argv[2];
 var command = process.argv[3];
-console.log(typeof(command));
-//var artistName = data.tracks.items[0].album.artists[0].name;
-//var albumName = data.tracks.items[0].album["name"];
-//var songName = data.tracks.items[0]["name"];
-//var songURL = data.tracks.items[0].external_urls["spotify"];
+
 
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
@@ -21,7 +17,7 @@ function spotThis(command) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
-    var logTxt = "song name: " +
+    var logTxt = "Song name: " +
         data.tracks.items[0]["name"] +
         "\nAlbum name: " +
         data.tracks.items[0].album["name"] +
@@ -31,7 +27,7 @@ function spotThis(command) {
         data.tracks.items[0].external_urls["spotify"];
         console.log(logTxt);
     //fs.writeFile("log.txt", logtxt);
-    fs.writeFile('log.txt', logTxt, (err) => {
+    fs.appendFile('log.txt', logTxt, (err) => {
         if(err) throw err;
         console.log('The File has been saved!');
     });
@@ -43,22 +39,37 @@ function spotThis(command) {
  function tweetThis(){
   client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
+        var twitTxt = "";
         for(i in tweets){
-            if(i >= 20){
+            if(i <= 20){
                 console.log(tweets[i].text);
+                twitTxt += tweets[i].text + "\n";
                 console.log(tweets[i].created_at);
+                twitTxt += tweets[i].created_at + "\n";
+                
             } else {
                 break;
             }
         }
         //fs.writeFile('pretty.json', JSON.stringify(tweets, null, 4));
-        fs.writeFile('pretty.txt', JSON.stringify(tweets, null, 4), (err) => {
+        fs.appendFile('log.txt', twitTxt, (err) => {
             if(err) throw err;
             console.log('The File has been saved!');
         });
     }
+    if(error){
+        throw error;
+    }
   })
 };
+
+function twitterBot(command){
+    client.post('statuses/update', {status: command},  function(error, tweet, response) {
+        if(error) throw error;
+        console.log(tweet);  // Tweet body. 
+        console.log(response);  // Raw response object. 
+      });
+}
 
 function omdbThis(command) {
     var request = require('request');
@@ -75,7 +86,7 @@ function omdbThis(command) {
         //console.log(parsed)
         console.log(movieTxt)
         //fs.writeFile("log.txt", movieTxt);
-        fs.writeFile('log.txt', movieTxt, (err) => {
+        fs.appendFile('log.txt', movieTxt, (err) => {
             if(err) throw err;
             console.log('The File has been saved!');
         });
@@ -92,5 +103,12 @@ if(program === "spotify-this-song"){
 }
 
 if(program === "movie"){
+    if(process.argv[3] === undefined){
+        command = "Mr. Nobody";
+    }
     omdbThis(command);
+}
+
+if(program === "twitter-bot"){
+    twitterBot(command);
 }
