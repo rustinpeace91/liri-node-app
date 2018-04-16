@@ -69,4 +69,11 @@ Rotten Tomatoes Rating: 87%
 Country: UK, USA
 LanguageEnglish
 Plot: A family heads to an isolated hotel for the winter where an evil spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.
-Cast: Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers
+Cast: Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman CrothersTitle: 2001: A Space Odyssey
+Year Released: 1968
+IMDB Rating: 8.3
+Rotten Tomatoes Rating: 94%
+Country: UK, USA
+LanguageEnglish, Russian
+Plot: Humanity finds a mysterious, obviously artificial object buried beneath the Lunar surface and, with the intelligent computer H.A.L. 9000, sets off on a quest.
+Cast: Keir Dullea, Gary Lockwood, William Sylvester, Daniel Richter
