@@ -1,17 +1,24 @@
+//requires the dotenv config contatining all the API keys
 require("dotenv").config();
 var fs = require("fs");
 var Spotify = require('node-spotify-api');
 var Twitter = require('twitter');
 var keys = require("./keys.js");
+//holds the command determining which function to call
 var program = process.argv[2];
+//holds the command determining what argument to pass said function
 var command = process.argv[3];
+//array for the "do-what-it-says" function 
+var custom = [];
 
-
+//Spotify and Twitter objects
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 var params = {screen_name: 'liri_project_tw'};
 
-   
+
+//function for calling the spotify API and passing it a song name
+//passes the API JSON data into a variable and logs it and appends it to log.txt
 function spotThis(command) {
     spotify.search({ type: 'track', query: command }, function(err, data) {
     if (err) {
@@ -35,8 +42,9 @@ function spotThis(command) {
   })
 };
 
- 
- function tweetThis(){
+//gathers tweets and logs them to the command line. 
+//cycles through the tweets as an array and appends them to a variable which is logged and appended to a text file
+function myTweets(){
   client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
         var twitTxt = "";
@@ -51,7 +59,6 @@ function spotThis(command) {
                 break;
             }
         }
-        //fs.writeFile('pretty.json', JSON.stringify(tweets, null, 4));
         fs.appendFile('log.txt', twitTxt, (err) => {
             if(err) throw err;
             console.log('The File has been saved!');
@@ -63,13 +70,16 @@ function spotThis(command) {
   })
 };
 
-function twitterBot(command){
+//also decided to make use of the client.post method so I can post tweets from the command line without having to look at twitter
+function tweetThis(command){
     client.post('statuses/update', {status: command},  function(error, tweet, response) {
         if(error) throw error;
         console.log(tweet);  // Tweet body. 
         console.log(response);  // Raw response object. 
       });
 }
+
+
 
 function omdbThis(command) {
     var request = require('request');
@@ -94,21 +104,39 @@ function omdbThis(command) {
 };
 
 
+//main function.  Takes in command line arguments and decides how to process them
+function main() {
+    //if do-what-it-says is typed, sets the command line argument variables to the data in the text file
+    if(program === "do-what-it-says"){
+        fs.readFile("random.txt",'utf8', (err,data) => {
+            if (err) throw err;
+            custom = data.split(",");
+            program = custom[0];
+            command = custom[1];
+            console.log(program);
+            main();
+        });
+    };
+    
+    if(program === "my-tweets"){
+        myTweets();
+    };
 
-if(program === "my-tweets"){
-    tweetThis();
-}
-if(program === "spotify-this-song"){
-    spotThis(command);
-}
+    if(program === "spotify-this-song"){
+        spotThis(command);
+    };
 
-if(program === "movie"){
-    if(process.argv[3] === undefined){
-        command = "Mr. Nobody";
-    }
-    omdbThis(command);
-}
+    if(program === "movie"){
+        if(process.argv[3] === undefined){
+            command = "Mr. Nobody";
+        };
+        omdbThis(command);
+    };
 
-if(program === "twitter-bot"){
-    twitterBot(command);
-}
+    if(program === "tweet-this"){
+        tweetThis(command);
+    }; 
+};
+
+//main function call
+main();
