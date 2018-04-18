@@ -78,8 +78,4 @@ var spotGet = function (command, spotify) {
 
 };
 
-var spotThis = new spotGet(command, spotify);
-//console.log(spotThis.song);
-//console.log(command);
-spotThis.getData(command);
-
+module.exports = spotGet;

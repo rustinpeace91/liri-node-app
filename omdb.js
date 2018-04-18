@@ -42,9 +42,7 @@ var omdbThis = function(command) {
     };
 };
 
-var omdbThis = new omdbThis(command);
-
-omdbThis.getMovie();
+module.exports = omdbThis;
 
 //main function.  Takes in command line arguments and decides how to process them
 

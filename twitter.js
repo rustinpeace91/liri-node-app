@@ -53,12 +53,18 @@ var TweetThis = function(command){
         });
     };
 
+    this.postTweet = function() {
+        client.post('statuses/update', {status: command},  function(error, tweet, response) {
+            if(error) throw error;
+            console.log(tweet);  // Tweet body. 
+            console.log(response);  // Raw response object. 
+        });
+    };
+
     }
 
 
 
 
 
-var tweeter = new TweetThis(command);
-
-tweeter.getTweets();
+module.exports = TweetThis;
