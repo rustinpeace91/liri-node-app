@@ -1,10 +1,9 @@
 //requires the dotenv config contatining all the API keys
-require("dotenv").config();
 var fs = require("fs");
-var Spotify = require('node-spotify-api');
-var Twitter = require('twitter');
-var keys = require("./keys.js");
 //holds the command determining which function to call
+var Spotify = require("./spotify.js")
+var Twitter = require("./twitter.js")
+
 var program = process.argv[2];
 //holds the command determining what argument to pass said function
 var command = process.argv[3];
@@ -12,9 +11,28 @@ var command = process.argv[3];
 var custom = [];
 
 //Spotify and Twitter objects
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
-var params = {screen_name: 'liri_project_tw'};
+
+
+switch(program){
+    case "my-tweets":
+        tweetThis = new Twitter();
+        tweetThis.getTweets();
+        break;
+    case "spotify-this-song":
+        spotThis = new Spotify(command);
+        spotThis.getData();
+        break;
+
+}
+
+
+
+
+
+
+
+
+
 
 
 //function for calling the spotify API and passing it a song name
@@ -144,5 +162,3 @@ function main() {
     }; 
 };
 
-//main function call
-main();

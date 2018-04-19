@@ -4,11 +4,7 @@ var fs = require("fs");
 var keys = require("./keys.js");
 var request = require('request');
 //holds the command determining which function to call
-var program = process.argv[1];
-//holds the command determining what argument to pass said function
-var command = process.argv[2];
-//array for the "do-what-it-says" function 
-var custom = [];
+
 
 //Spotify and Twitter objects
 var params = {screen_name: 'liri_project_tw'};

@@ -4,11 +4,7 @@ var fs = require("fs");
 var Spotify = require('node-spotify-api');
 var keys = require("./keys.js");
 //holds the command determining which function to call
-var program = process.argv[1];
-//holds the command determining what argument to pass said function
-var command = process.argv[2];
-//array for the "do-what-it-says" function 
-var custom = [];
+
 
 //Spotify and Twitter objects
 var spotify = new Spotify(keys.spotify);
@@ -25,11 +21,11 @@ var spotGet = function (command, spotify) {
     this.URL = '';
     this.logTXT = '';
     this.getData = function () {
-        spotify.search({ type: 'track', query: command}, function (err, data) {
+        spotify.search({ type: 'track', query: "Beat It", function(err, data) {
             if (err) {
                 return console.log('Error occurred: ' + err);
-            }
-
+            };
+            console.log(data);
             this.album = data.tracks.items[0].album['name'];
 
             this.songName = data.tracks.items[0]["name"];
@@ -38,7 +34,7 @@ var spotGet = function (command, spotify) {
             
             this.URL = data.tracks.items[0].external_urls["spotify"];
             console.log(artist);
-        })
+        }});
     };
 
     this.writeData = function () {
